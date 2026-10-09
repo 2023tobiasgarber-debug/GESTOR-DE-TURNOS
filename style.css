@@ -1,0 +1,449 @@
+
+/* CONFIGURACIÓN GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --azul: #2563eb;
+    --azul-oscuro: #1e40af;
+    --fondo: #f1f5f9;
+    --blanco: #ffffff;
+    --texto: #1e293b;
+    --gris: #64748b;
+    --borde: #e2e8f0;
+    --rojo: #dc2626;
+    --verde: #15803d;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+    min-height: 100vh;
+}
+
+/* ENCABEZADO */
+.encabezado {
+    background: var(--azul);
+    color: white;
+    padding: 25px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 3px 10px #00000012;
+}
+
+.encabezado h1 {
+    font-size: 28px;
+    margin-bottom: 6px;
+}
+
+.encabezado p {
+    color: #dbeafe;
+    font-size: 14px;
+}
+
+.icono-medico {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: white;
+    color: var(--azul);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.contenedor {
+    width: 90%;
+    max-width: 1250px;
+    margin: 35px auto;
+    display: grid;
+    grid-template-columns: 0.85fr 1.4fr;
+    gap: 25px;
+    align-items: start;
+}
+
+/* TARJETAS PRINCIPALES */
+.formulario-seccion,
+.panel-seccion {
+    background: var(--blanco);
+    padding: 28px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px #0f172a0b;
+    border: 1px solid var(--borde);
+    min-width: 0;
+}
+
+h2 {
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+
+.descripcion {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--gris);
+    margin-bottom: 25px;
+}
+
+/* FORMULARIO */
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 19px;
+}
+
+.campo label,
+.filtros label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: white;
+    color: var(--texto);
+    font-size: 14px;
+    outline: none;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px #2563eb1a;
+}
+
+input:disabled,
+select:disabled {
+    background: #f1f5f9;
+    cursor: not-allowed;
+}
+
+.campo small {
+    color: var(--gris);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* BOTONES */
+button {
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+button:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
+}
+
+.boton-guardar {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 9px;
+    background: var(--azul);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.boton-guardar:hover {
+    background: var(--azul-oscuro);
+}
+
+.boton-secundario {
+    padding: 10px 13px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    background: white;
+    color: var(--texto);
+    font-size: 13px;
+}
+
+.boton-secundario:hover {
+    background: #f1f5f9;
+}
+
+#mensaje {
+    margin-top: 14px;
+    font-size: 13px;
+    line-height: 1.5;
+    font-weight: bold;
+}
+
+#mensaje.exito {
+    color: var(--verde);
+}
+
+#mensaje.error {
+    color: var(--rojo);
+}
+
+/* CONFIGURACIÓN DEL CONSULTORIO */
+.configuracion {
+    border-top: 1px solid var(--borde);
+    margin-top: 25px;
+    padding-top: 18px;
+}
+
+.configuracion summary {
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--azul-oscuro);
+    margin-bottom: 15px;
+}
+
+.configuracion:not([open]) summary {
+    margin-bottom: 0;
+}
+
+.boton-configuracion {
+    width: 100%;
+    padding: 11px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    color: var(--azul-oscuro);
+    font-weight: bold;
+}
+
+.boton-configuracion:hover {
+    background: #dbeafe;
+}
+
+/* TÍTULO DEL PANEL */
+.panel-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.panel-titulo .descripcion {
+    margin-bottom: 20px;
+}
+
+.contador {
+    background: #eff6ff;
+    color: var(--azul-oscuro);
+    padding: 10px 15px;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 65px;
+}
+
+.contador span {
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.contador small {
+    font-size: 11px;
+}
+
+/* RESUMEN */
+.resumen {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.resumen-item {
+    background: #f8fafc;
+    border: 1px solid var(--borde);
+    padding: 13px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+}
+
+.resumen-item strong {
+    margin-left: auto;
+    font-size: 16px;
+}
+
+.punto {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.punto.ocupado {
+    background: #dc2626;
+}
+
+.punto.libre {
+    background: #16a34a;
+}
+
+/* FILTROS */
+.filtros {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.filtros label {
+    width: 100%;
+}
+
+.filtros input {
+    flex: 1;
+    min-width: 140px;
+}
+
+/* LISTA DE TURNOS */
+.lista-turnos {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.tarjeta-turno {
+    border: 1px solid var(--borde);
+    border-left: 4px solid var(--azul);
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    background: white;
+}
+
+.datos-turno {
+    min-width: 0;
+}
+
+.datos-turno h3 {
+    font-size: 15px;
+    margin-bottom: 7px;
+    overflow-wrap: anywhere;
+}
+
+.datos-turno p {
+    font-size: 13px;
+    color: var(--gris);
+    margin-top: 5px;
+    line-height: 1.4;
+}
+
+.hora-turno {
+    display: inline-block;
+    background: #eff6ff;
+    color: var(--azul-oscuro);
+    padding: 5px 8px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.etiqueta-ocupado {
+    display: inline-block;
+    background: #fee2e2;
+    color: #b91c1c;
+    border-radius: 6px;
+    padding: 5px 8px;
+    font-size: 11px;
+    font-weight: bold;
+    margin-top: 9px;
+}
+
+.boton-eliminar {
+    flex-shrink: 0;
+    padding: 9px 11px;
+    border: 1px solid #fecaca;
+    background: #fff1f2;
+    color: #b91c1c;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.boton-eliminar:hover {
+    background: #fee2e2;
+}
+
+/* MENSAJE SIN TURNOS */
+.sin-turnos {
+    color: var(--gris);
+    text-align: center;
+    padding: 35px 15px;
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.sin-turnos[hidden] {
+    display: none;
+}
+
+/* PIE DE PÁGINA */
+footer {
+    text-align: center;
+    color: var(--gris);
+    font-size: 12px;
+    padding: 20px;
+}
+
+/* ADAPTACIÓN A CELULARES */
+@media (max-width: 850px) {
+    .contenedor {
+        grid-template-columns: 1fr;
+        width: 92%;
+        margin: 22px auto;
+    }
+
+    .encabezado {
+        padding: 22px 5%;
+    }
+}
+
+@media (max-width: 480px) {
+    .encabezado h1 {
+        font-size: 23px;
+    }
+
+    .formulario-seccion,
+    .panel-seccion {
+        padding: 20px;
+    }
+
+    .tarjeta-turno {
+        align-items: flex-start;
+        padding: 12px;
+        gap: 8px;
+    }
+
+    .boton-eliminar {
+        padding: 8px;
+        font-size: 11px;
+    }
+
+    .resumen {
+        grid-template-columns: 1fr;
+    }
+}

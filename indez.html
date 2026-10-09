@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Turnos Médicos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header class="encabezado">
+        <div>
+            <h1>Turnos Médicos</h1>
+            <p>Gestión y asignación de turnos</p>
+        </div>
+        <div class="icono-medico">✚</div>
+    </header>
+
+    <main class="contenedor">
+
+        <!-- SECCIÓN IZQUIERDA: FORMULARIO -->
+        <section class="formulario-seccion">
+            <h2>Asignar un turno</h2>
+            <p class="descripcion">
+                Completá los datos para registrar al paciente.
+            </p>
+
+            <form id="formularioTurno">
+
+                <div class="campo">
+                    <label for="nombre">Nombre y apellido</label>
+                    <input
+                        type="text"
+                        id="nombre"
+                        placeholder="Ej.: Juan Pérez"
+                        required
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="fecha">Fecha del turno</label>
+                    <input type="date" id="fecha" required>
+                </div>
+
+                <div class="campo">
+                    <label for="horario">Horario disponible</label>
+                    <select id="horario" required>
+                        <option value="">Primero seleccioná una fecha</option>
+                    </select>
+                    <small id="mensajeHorario">
+                        Los turnos duran 30 minutos.
+                    </small>
+                </div>
+
+                <div class="campo">
+                    <label for="especialidad">Especialidad médica</label>
+                    <select id="especialidad" required>
+                        <option value="">Seleccioná una especialidad</option>
+                        <option value="Clínica médica">Clínica médica</option>
+                        <option value="Cardiología">Cardiología</option>
+                        <option value="Pediatría">Pediatría</option>
+                        <option value="Dermatología">Dermatología</option>
+                        <option value="Traumatología">Traumatología</option>
+                        <option value="Oftalmología">Oftalmología</option>
+                        <option value="Odontología">Odontología</option>
+                        <option value="Otra">Otra</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="boton-guardar">
+                    + Guardar turno
+                </button>
+
+                <p id="mensaje" role="status" aria-live="polite"></p>
+
+            </form>
+
+            <!-- CONFIGURACIÓN DEL CONSULTORIO -->
+            <details class="configuracion">
+                <summary>Configurar horario del consultorio</summary>
+
+                <div class="campo">
+                    <label for="horaInicio">Hora de apertura</label>
+                    <input type="time" id="horaInicio" value="08:00" required>
+                </div>
+
+                <div class="campo">
+                    <label for="horaFin">Hora de cierre</label>
+                    <input type="time" id="horaFin" value="18:00" required>
+                </div>
+
+                <div class="campo">
+                    <label for="diasAtencion">Días de atención</label>
+                    <select id="diasAtencion">
+                        <option value="lunes-viernes">Lunes a viernes</option>
+                        <option value="lunes-sabado">Lunes a sábado</option>
+                        <option value="todos">Todos los días</option>
+                    </select>
+                </div>
+
+                <button type="button" id="guardarConfiguracion"
+                        class="boton-configuracion">
+                    Guardar configuración
+                </button>
+            </details>
+        </section>
+
+        <!-- SECCIÓN DERECHA: PANEL DE TURNOS -->
+        <section class="panel-seccion">
+            <div class="panel-titulo">
+                <div>
+                    <h2>Panel de turnos</h2>
+                    <p class="descripcion">
+                        Consultá y administrá los turnos asignados.
+                    </p>
+                </div>
+
+                <div class="contador">
+                    <span id="cantidadTurnos">0</span>
+                    <small>turnos</small>
+                </div>
+            </div>
+
+            <div class="resumen">
+                <div class="resumen-item">
+                    <span class="punto ocupado"></span>
+                    <span>Ocupados</span>
+                    <strong id="cantidadOcupados">0</strong>
+                </div>
+
+                <div class="resumen-item">
+                    <span class="punto libre"></span>
+                    <span>Disponibles</span>
+                    <strong id="cantidadDisponibles">0</strong>
+                </div>
+            </div>
+
+            <div class="filtros">
+                <label for="filtroFecha">Filtrar por fecha</label>
+                <input type="date" id="filtroFecha">
+
+                <button type="button" id="verTodos" class="boton-secundario">
+                    Ver todos
+                </button>
+            </div>
+
+            <div id="listaTurnos" class="lista-turnos">
+                <!-- JavaScript agrega los turnos aquí -->
+            </div>
+
+            <p id="sinTurnos" class="sin-turnos">
+                Todavía no hay turnos registrados.
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        Sistema de gestión de turnos médicos
+    </footer>
+
+</body>
+</html>
